@@ -10,6 +10,7 @@ import "firebase/analytics";
 import "firebase/storage";
 import { Login } from './Login';
 import { Upload } from './Upload';
+import { StyleDisplay } from './StyleDisplay';
 
 const firebaseConfig = {
   apiKey: "AIzaSyATo1D562Qabi_umeG25f-SIaLgsyF0aD8",
@@ -34,6 +35,7 @@ function App() {
     <div className="App">
         <Switch>
           <Route path="/" component={Homepage} exact/>
+          <Route path="/art1" component={StyleDisplay}/>
           <Route path="/login" component={Login}/>
           <Route path="/upload" component ={Upload}/>
         </Switch>
