@@ -1,6 +1,6 @@
 import React from 'react';
 import { auth, db, provider } from './App';
-import { UsersCollections } from './collections';
+import { UsersCollection } from './collections';
 
 export const Login: React.FC = (): JSX.Element => {
 	return (
@@ -19,7 +19,7 @@ export const Login: React.FC = (): JSX.Element => {
 							// The signed-in user info.
 							const user = result.user;
 							console.log(user);
-							db.collection(UsersCollections).add({ uid: user.uid });
+							db.collection(UsersCollection).add({ uid: user.uid });
 							// ...
 						})
 						.catch((error: any) => {

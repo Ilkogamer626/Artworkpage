@@ -1,0 +1,20 @@
+ul {
+	list-style-type: none;
+	marker: none;
+}
+.art {
+	width: 200px;
+	height: 200px;
+	transition: transform var(--speed) ease-in-out;
+}
+.art:hover {
+	transform: scale(1.45);
+}
+li {
+	position: relative;
+	margin: auto;
+	margin-bottom: 20px;
+}
+li:hover {
+	z-index: 50;
+}

@@ -1,2 +1,2 @@
 export const ArtworkCollection = "artworks";
-export const UsersCollections = "users";
+export const UsersCollection = "users";

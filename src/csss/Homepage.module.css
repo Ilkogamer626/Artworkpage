@@ -1,0 +1,38 @@
+.footer {
+	font-family: PlayfairDisplay, Arial, Helvetica, sans-serif;
+}
+li {
+	position: relative;
+	margin: auto;
+	margin-bottom: 20px;
+}
+li:hover {
+	z-index: 50;
+}
+.artName {
+	align-self: center;
+	margin: 0;
+	background-color: #fff;
+}
+.art {
+	width: 200px;
+	height: 200px;
+	transition: transform var(--speed) ease-in-out;
+}
+.art:hover {
+	transform: scale(1.45);
+}
+.logo {
+	margin: auto;
+}
+.link {
+	margin: 5px;
+}
+.linkp:hover {
+	color: #fff;
+	background-color: #326201;
+}
+.linkp {
+	border-radius: 5px;
+	padding: 5px;
+}
