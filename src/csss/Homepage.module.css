@@ -1,5 +1,7 @@
 .footer {
 	font-family: PlayfairDisplay, Arial, Helvetica, sans-serif;
+	margin-bottom: 2.7rem;
+	font-size: 1.2rem;
 }
 li {
 	position: relative;
@@ -9,21 +11,24 @@ li {
 li:hover {
 	z-index: 50;
 }
-.artName {
-	align-self: center;
-	margin: 0;
-	background-color: #fff;
+
+.bigArt {
+	max-width: none !important;
+	max-height: none !important;
+	object-fit: none !important;
 }
-.art {
-	width: 200px;
-	height: 200px;
-	transition: transform var(--speed) ease-in-out;
+.bigArtContainer {
+	animation: onMount, 10s, forwards;
 }
-.art:hover {
-	transform: scale(1.45);
-}
+
 .logo {
 	margin: auto;
+	max-width: 100vw;
+}
+.logo img {
+	object-fit: scale-down;
+	width: 100%;
+	max-width: 20rem;
 }
 .link {
 	margin: 5px;
@@ -35,4 +40,8 @@ li:hover {
 .linkp {
 	border-radius: 5px;
 	padding: 5px;
+	font-size: 1.2rem;
+}
+.listElement {
+	margin: 40px 0px;
 }

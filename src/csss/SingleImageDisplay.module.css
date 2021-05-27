@@ -1,0 +1,122 @@
+.artName {
+  align-self: center;
+  margin: 0;
+  background-color: #fff;
+  font-size: 1.2rem;
+}
+.art {
+  max-width: 100%;
+  object-fit: contain;
+}
+.art:hover {
+  cursor: pointer;
+}
+.additionalInfo {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 30%;
+  padding-left: 1rem;
+}
+.container {
+  position: relative;
+  max-width: 30rem;
+  margin: auto;
+}
+.centeringDiv {
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: inherit;
+}
+
+.centeringDiv:hover {
+  background-color: #00000050;
+  opacity: 1;
+  cursor: pointer;
+}
+.bigContainer {
+  display: flex;
+  justify-content: center;
+  max-width: 60rem;
+  margin: 0 auto;
+  animation: FadeIn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+}
+.bigArt {
+  max-width: 70%;
+}
+.bigArt:hover {
+  cursor: pointer;
+}
+.artTitle {
+  padding-left: 7px;
+  margin-top: 0;
+  text-align: left;
+  font-size: 1.4rem;
+}
+.artStyle {
+  padding-left: 7px;
+  margin-top: 0;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.artDate {
+  padding-left: 7px;
+  margin-top: 0;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.artDescription {
+  padding-left: 7px;
+  margin-top: 0;
+  text-align: left;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.smallArtName {
+  position: relative;
+  color: ivory;
+  margin-top: 5px;
+  font-size: 25px;
+}
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@media (max-width: 375px) {
+  .bigContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 23.4375rem;
+    margin: 0 auto;
+    animation: FadeIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+  }
+  .bigArt {
+    margin: auto;
+  }
+  .additionalInfo {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 30%;
+    padding-left: 1rem;
+    padding-top: 1.3rem;
+  }
+}

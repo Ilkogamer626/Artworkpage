@@ -1,20 +1,25 @@
 ul {
-	list-style-type: none;
-	marker: none;
-}
-.art {
-	width: 200px;
-	height: 200px;
-	transition: transform var(--speed) ease-in-out;
-}
-.art:hover {
-	transform: scale(1.45);
+  list-style-type: none;
+  marker: none;
 }
 li {
-	position: relative;
-	margin: auto;
-	margin-bottom: 20px;
+  position: relative;
+  margin: auto;
+  margin-bottom: 20px;
 }
 li:hover {
-	z-index: 50;
+  z-index: 50;
+}
+.link {
+  margin: 5px;
+}
+
+.linkp {
+  color: #052a01;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 1.3rem;
+}
+.listElement {
+  margin-top: 1.5rem;
 }

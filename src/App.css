@@ -11,16 +11,13 @@ body {
 	font-family: PlayfairDisplay;
 	background-color: #fff;
 }
-
-img {
-	width: 200px;
-	height: 200px;
-	object-fit: scale-down;
-}
 ul {
 	list-style-type: none;
-	margin: 0;
 	padding: 0;
+	margin: 0;
+	padding-inline-start: 0;
+	margin-block-start: 0;
+	margin-block-end: 0;
 }
 a {
 	color: black;
