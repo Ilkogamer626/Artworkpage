@@ -4,19 +4,54 @@ import { Link } from "react-router-dom";
 import { db, storage } from "./App";
 import { ArtworkCollection, UsersCollection } from "./collections";
 import { Login } from "./Login";
-import { ArtStyle, Artwork, DatabaseUSER } from "./Models";
+import { Artwork, DatabaseUSER } from "./Models";
 import styles from "./csss/Upload.module.css";
 
 export const Upload: React.FC = () => {
-  const [artStyle, setArtStyle] = React.useState<ArtStyle>("art1");
+  const [artStyle, setArtStyle] = React.useState("");
   const [artName, setArtName] = React.useState("");
   const [artDescription, setArtDescription] = React.useState("");
   const [afterUpload, setAfterUpload] = React.useState("");
   const [IsUserLogged, setIsUserLogged] = React.useState(false);
+  const [artStyles, setArtStyles] = React.useState<string[]>();
+  const [newStyle, setNewStyle] = React.useState("");
   const [databaseUser, setDatabaseUser] = React.useState<
     DatabaseUSER | undefined
   >();
   const [user, setUser] = React.useState<firebase.User | null>(null);
+  const getStylesFromDatabase = async () => {
+    let stylesFromDatabaseSnapshot = await db
+      .collection("styles")
+      .doc("styles")
+      .get();
+    let stylesFromDatabase = stylesFromDatabaseSnapshot.data();
+    setArtStyles(stylesFromDatabase?.styles as string[]);
+    console.log(artStyles);
+  };
+
+  useEffect(() => {
+    getStylesFromDatabase();
+  }, []);
+
+  let optionsArray = artStyles?.map((artStyleToOtion) => (
+    <option>{artStyleToOtion}</option>
+  ));
+  let listOfOptions = artStyles?.map((artSttyleToListElement) => (
+    <li key={artSttyleToListElement}>
+      {artSttyleToListElement}
+      <button
+        onClick={() => {
+          for (let index = 0; index < artStyles.length; index++) {
+            if (artStyles[index] === artSttyleToListElement) {
+              artStyles.splice(index, 1);
+            }
+          }
+        }}
+      >
+        🗑
+      </button>
+    </li>
+  ));
 
   const input = useRef<HTMLInputElement>(null);
   const handleSignOut = () => {
@@ -68,11 +103,12 @@ export const Upload: React.FC = () => {
   let DatabaseUser: DatabaseUSER | undefined;
   const DoDatabaseStuff = async (): Promise<void> => {
     if (!user) return;
-    const querySnapshot = await db
+    const userSnapshot = await db
       .collection(UsersCollection)
-      .where("uid", "==", user.uid)
+      .doc(user.uid)
       .get();
-    querySnapshot.forEach((doc) => setDatabaseUser(doc.data() as DatabaseUSER));
+    const UserCheckedByDatabase = userSnapshot.data() as DatabaseUSER;
+    setDatabaseUser(UserCheckedByDatabase);
   };
   useEffect(() => {
     DoDatabaseStuff();
@@ -86,7 +122,14 @@ export const Upload: React.FC = () => {
   }
 
   if (!databaseUser?.isAdmin) {
-    return <div> Sorry you are not an admin</div>;
+    return (
+      <div>
+        <p>Sorry you are not an admin</p>
+        <div>
+          <button onClick={handleSignOut}>Sign Out</button>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -112,15 +155,34 @@ export const Upload: React.FC = () => {
         <select
           value={artStyle}
           onChange={(e) => {
-            setArtStyle(e.target.value as ArtStyle);
+            setArtStyle(e.target.value);
             setAfterUpload("");
           }}
         >
-          <option>art1</option>
-          <option>art2</option>
-          <option>art3</option>
+          {optionsArray}
         </select>
         <button className={styles.submitButton}>Submit</button>
+        <div>
+          <ul>{listOfOptions}</ul>
+          <div>
+            <input
+              onChange={(e) => {
+                setNewStyle(e.target.value);
+              }}
+              type="text"
+              placeholder="Add new style"
+            />
+            <button
+              onClick={() => {
+                artStyles?.push(newStyle);
+                setArtStyles(artStyles);
+                console.log(artStyles);
+              }}
+            >
+              +
+            </button>
+          </div>
+        </div>
         <p className={styles.afterUploadparagraph}>{afterUpload}</p>
         <div className={styles.linkToHome}>
           <Link to="/">
